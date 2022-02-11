@@ -1,4 +1,4 @@
-.coverage/
+.coverage
 htmlcov/
 src/__pycache__/
 test/__pycache__/
