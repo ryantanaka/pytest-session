@@ -1,6 +1,6 @@
-.coverage
-htmlcov
-src/__pycache__
-test/__pycache_
-venv
+.coverage/
+htmlcov/
+src/__pycache__/
+test/__pycache__/
+venv/
 
