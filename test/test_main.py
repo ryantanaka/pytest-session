@@ -6,8 +6,8 @@ from main import Bank
 @pytest.fixture(scope="function")
 def test_bank_instance():
     bank = Bank()
-    bank._accounts[1] = 100
-    bank._accounts[2] = 200
+    bank._accounts[1] = 100.0
+    bank._accounts[2] = 200.0
 
     return bank
 
@@ -16,18 +16,18 @@ class TestBank:
         assert Bank()
 
     def test_deposit_money_1(self, test_bank_instance):
-        test_bank_instance.deposit_money(1, 100)
-        assert test_bank_instance._accounts == {1:200, 2:200}
+        test_bank_instance.deposit_money(1, 100.0)
+        assert test_bank_instance._accounts == {1:200.0, 2:200.0}
 
     def test_deposit_money_2(self, test_bank_instance):
-        test_bank_instance.deposit_money(2, 200)
-        assert test_bank_instance._accounts == {1:100, 2:400}
+        test_bank_instance.deposit_money(2, 200.0)
+        assert test_bank_instance._accounts == {1:100.0, 2:400.0}
 
     @pytest.mark.parametrize(
             "account,amount,expected_balances",
             [
-                (1, 100, {1:200, 2:200}),
-                (2, 200, {1:100, 2:400}),
+                (1, 100.0, {1:200.0, 2:200.0}),
+                (2, 200.0, {1:100.0, 2:400.0}),
             ]
     )
     def test_deposit_money_parametrized(self, test_bank_instance, account, amount, expected_balances):
@@ -36,7 +36,7 @@ class TestBank:
 
     def test_deposit_money_into_invalid_account(self, test_bank_instance):
         with pytest.raises(ValueError) as e:
-            test_bank_instance.deposit_money(account="bad_account", amount=1)
+            test_bank_instance.deposit_money(account="bad_account", amount=1.0)
 
         assert "Account does not exist" in str(e)
 
@@ -47,7 +47,7 @@ class TestBank:
         assert "Deposit amount should be greater than 0!" in str(e)
 
     def test_get_balance(self, test_bank_instance):
-        assert test_bank_instance.get_balance(account=1) == 100
+        assert test_bank_instance.get_balance(account=1) == 100.0
 
     '''
     def test_get_balance_invalid_account(self, test_bank_instance):
