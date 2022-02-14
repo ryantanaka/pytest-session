@@ -7,4 +7,4 @@ then
 fi
 
 export PYTHONPATH=$(pwd)/src
-pytest --cov-report term --cov-report html --cov=src
+python3 -m pytest --cov-report term --cov-report html --cov=src
