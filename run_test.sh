@@ -3,7 +3,7 @@
 python3 -c "import pytest" &> /dev/null
 if [ "$(echo $?)" -eq 1 ]
 then
-    pip3 install pytest pytest-cov
+    pip3 install --user pytest pytest-cov
 fi
 
 export PYTHONPATH=$(pwd)/src
